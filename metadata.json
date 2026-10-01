@@ -1,0 +1,6 @@
+{
+  "name": "DeadLockIQ",
+  "description": "Distributed concurrency protection, real-time wait-for graph cycle detection, and automated deadlock resolution engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
