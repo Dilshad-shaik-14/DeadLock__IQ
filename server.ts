@@ -25,12 +25,13 @@ let goProcess: ChildProcess | null = null;
 function startGoBackend(): Promise<void> {
   return new Promise((resolve, reject) => {
     const backendDir = path.resolve(process.cwd(), 'backend');
-    const binaryPath = path.resolve(backendDir, 'deadlockiq-server');
+    const binaryName = process.platform === 'win32' ? 'deadlockiq-server.exe' : 'deadlockiq-server';
+    const binaryPath = path.resolve(backendDir, binaryName);
 
     if (!fs.existsSync(binaryPath)) {
       console.log('[DeadLockIQ Gateway] Building Go backend binary...');
       try {
-        execSync('go build -o deadlockiq-server cmd/server/main.go', {
+        execSync(`go build -o ${binaryName} cmd/server/main.go`, {
           cwd: backendDir,
           stdio: 'inherit',
         });
